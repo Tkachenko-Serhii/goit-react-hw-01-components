@@ -1,4 +1,13 @@
-export default function Profile({ name, tag, location, avatar, stats }) {
+import PropTypes from 'prop-types';
+import defaultImage from '../image/default.jpg';
+
+export default function Profile({
+  name,
+  tag,
+  location,
+  avatar = defaultImage,
+  stats,
+}) {
   return (
     <div className="profile">
       <div className="description">
@@ -25,3 +34,11 @@ export default function Profile({ name, tag, location, avatar, stats }) {
     </div>
   );
 }
+
+Profile.propTypes = {
+  name: PropTypes.string,
+  tag: PropTypes.string,
+  location: PropTypes.string,
+  avatar: PropTypes.string,
+  stats: PropTypes.objectOf(PropTypes.number),
+};
