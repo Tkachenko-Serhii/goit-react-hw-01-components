@@ -20,18 +20,6 @@ export default function App() {
         avatar={user.avatar}
         stats={user.stats}
       />
-      <section className="statistics">
-        <h2 className="title">Upload stats</h2>
-        <ul className="stat-list">
-          {statisticalData.map(data => (
-            <Statistics
-              key={data.id}
-              label={data.label}
-              percentage={data.percentage}
-            />
-          ))}
-        </ul>
-      </section>
       <ul className="friend-list">
         {friends.map(friend => (
           <FriendList
@@ -42,25 +30,8 @@ export default function App() {
           />
         ))}
       </ul>
-      <table className="transaction-history">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Amount</th>
-            <th>Currency</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map(transaction => (
-            <TransactionHistory
-              key={transaction.id}
-              type={transaction.type}
-              amount={transaction.amount}
-              currency={transaction.currency}
-            />
-          ))}
-        </tbody>
-      </table>
+      <Statistics title="Upload stats" stats={statisticalData} />
+      <TransactionHistory transactions={transactions} />
     </main>
   );
 }
