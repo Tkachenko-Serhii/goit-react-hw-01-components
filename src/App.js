@@ -20,16 +20,7 @@ export default function App() {
         avatar={user.avatar}
         stats={user.stats}
       />
-      <ul className="friend-list">
-        {friends.map(friend => (
-          <FriendList
-            key={friend.id}
-            avatar={friend.avatar}
-            name={friend.name}
-            isOnline={friend.isOnline}
-          />
-        ))}
-      </ul>
+      <FriendList friends={friends} />
       <Statistics title="Upload stats" stats={statisticalData} />
       <TransactionHistory transactions={transactions} />
     </main>

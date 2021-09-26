@@ -1,23 +1,25 @@
 import PropTypes from 'prop-types';
-import defaultImage from '../../image/default.jpg';
 import s from './FriendList.module.css';
 
-export default function FriendList({
-  avatar = defaultImage,
-  name,
-  isOnline = false,
-  id,
-}) {
-  const statusColor = isOnline ? 'green' : 'red';
+export default function FriendList({ friends }) {
   return (
-    <li className={s.item} key={id}>
-      <span
-        className={s.status}
-        style={{ backgroundColor: statusColor }}
-      ></span>
-      <img className={s.avatar} src={avatar} alt={name} width="48" />
-      <p className={s.name}>{name}</p>
-    </li>
+    <ul className="friend-list">
+      {friends.map(friend => (
+        <li className={s.item} key={friend.id}>
+          <span
+            className={s.status}
+            style={{ backgroundColor: friend.isOnline ? 'green' : 'red' }}
+          ></span>
+          <img
+            className={s.avatar}
+            src={friend.avatar}
+            alt={friend.name}
+            width="48"
+          />
+          <p className={s.name}>{friend.name}</p>
+        </li>
+      ))}
+    </ul>
   );
 }
 
